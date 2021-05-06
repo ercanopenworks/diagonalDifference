@@ -8,22 +8,32 @@ namespace DiagonalDifference
     {
         public static int diagonalDifference(List<List<int>> arr)
         {
-            int sum = 0;
+            int sum = 0, col = 0;
             int firstDia = 0, secDia=0;
+
+            //better performans Big O(N)
 
             for (int i = 0; i < arr.Count; i++)
             {
-                var list = arr[i];
-                firstDia += list[i];
-
+                firstDia += arr[i][col];
+                secDia += arr[i][arr.Count - 1 - col];
+                col++;
             }
 
-            for (int i = 0; i <arr.Count ; i++)
-            {
-                var list = arr[i];
-                secDia += list[arr.Count-1-i];
+            //worst-case performans Big O(n^2)
+            //for (int i = 0; i < arr.Count; i++)
+            //{
+            //    var list = arr[i];
+            //    firstDia += list[i];
 
-            }
+            //}
+
+            //for (int i = 0; i <arr.Count ; i++)
+            //{
+            //    var list = arr[i];
+            //    secDia += list[arr.Count-1-i];
+
+            //}
 
             sum = Math.Abs((firstDia - secDia));
 
